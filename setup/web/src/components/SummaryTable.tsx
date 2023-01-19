@@ -1,5 +1,5 @@
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning"
-import HabitDay from "./HabitDay"
+import { HabitDay } from "./HabitDay"
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 
@@ -25,9 +25,15 @@ const SummaryTable = () => {
       </div>
 
       <div className="grid grid-rows-7 grid-flow-col gap-3">
-        {summaryDates.map(date => (
-          <HabitDay key={date.toString()} />
-        ))}
+        {summaryDates.map(date => {
+          return (
+            <HabitDay
+              key={date.toString()}
+              amount={5}
+              completed={Math.round(Math.random() * 5)}
+            />
+          )
+        })}
 
         {amountDayToFill > 0 && Array.from({ length: amountDayToFill }).map((_, i) => {
           return (
