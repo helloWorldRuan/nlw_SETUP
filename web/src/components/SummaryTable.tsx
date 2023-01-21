@@ -31,7 +31,7 @@ const SummaryTable = () => {
 
 
   return (
-    <div className="w-full flex overflow-x-auto">
+    <div className="w-full flex ">
       <div className="grid grid-rows-7 grid-flow-row gap-3 ">
         {weekDays.map((weekDay, i) => {
           return (
@@ -46,7 +46,7 @@ const SummaryTable = () => {
       </div>
 
       <div className="grid grid-rows-7 grid-flow-col gap-3">
-        {summaryDates.map(date => {
+        {summary.length > 0 && summaryDates.map(date => {
           const dayInSummary = summary.find(day => {
             return dayjs(date).isSame(day.date, 'day')
           })
@@ -56,7 +56,7 @@ const SummaryTable = () => {
               key={date.toString()}
               date={date}
               amount={dayInSummary?.amount}
-              completed={dayInSummary?.completed}
+              defaultCompleted={dayInSummary?.completed}
             />
           )
         })}
